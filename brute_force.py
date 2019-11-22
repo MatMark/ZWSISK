@@ -32,10 +32,10 @@ if __name__ == '__main__':
     file_name = easygui.fileopenbox()
     m = Matrix(file_name)
     cities = m.get_matrix()
-    pool = multiprocessing.Pool(processes=None)
+    pool = multiprocessing.Pool(processes=8)
     path = []
     best_of_the_best = None
-    paths_in_one = 2 ** 24
+    paths_in_one = 2 ** 23
 
     for i in range(m.get_size()):
         if i != 0:
