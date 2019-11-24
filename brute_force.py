@@ -32,10 +32,10 @@ if __name__ == '__main__':
     file_name = easygui.fileopenbox()
     m = Matrix(file_name)
     cities = m.get_matrix()
-    pool = multiprocessing.Pool(processes=8)
+    pool = multiprocessing.Pool(processes=int(input("Number of processes: ")))
     path = []
     best_of_the_best = None
-    paths_in_one = 2 ** 23
+    paths_in_one = 2 ** 15
 
     for i in range(m.get_size()):
         if i != 0:
@@ -52,7 +52,6 @@ if __name__ == '__main__':
                 break
 
         bf_process = partial(run_bf, cities)
-        pool.map(bf_process, path_list)
         result = pool.map(bf_process, path_list)
 
         dict_res = {}
